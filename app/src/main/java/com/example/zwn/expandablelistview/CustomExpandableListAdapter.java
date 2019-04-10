@@ -60,6 +60,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         String headerTitle = (String)getGroup(groupPosition);
@@ -71,6 +72,13 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         TextView txtListHeader = convertView.findViewById(R.id.txtListHeader);
         txtListHeader.setTypeface(null, Typeface.BOLD);
         txtListHeader.setText(headerTitle);
+        if (isExpanded) {
+            txtListHeader.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
+//            convertView.setBackgroundResource(R.drawable.gradient);
+        } else {
+            txtListHeader.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_expand_more,0);
+//            convertView.setBackgroundResource(R.color.colorPrimary);
+        }
         return convertView;
     }
 
